@@ -20,4 +20,4 @@ jobs:
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa deploy-user@${{ secrets.IP }} "cd /Bot-Creator/projects && docker build -t Bot0:${{ github.run_number }} ."
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa deploy-user@${{ secrets.IP }} "cd /home/deploy-user/Bot-Creator/projects && docker build -t Bot0:${{ github.run_number }} ."
