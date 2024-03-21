@@ -90,7 +90,7 @@ requester.get("/api/v3/gateway/index")
                                     console.info(rptURL);
                                     rptTransfer(rptURL,media,null)
                                 })
-                                //axios.post(baseUrl+music_activity,{id:1,data_type:2,singer:"古巨基",music_name:"情歌王"},{headers}).then(data=>{log.debug(data.data)}).catch(err=>{log.error(err)})
+                                
                             });
                         }
                         
