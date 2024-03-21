@@ -19,4 +19,4 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa deploy-user@101.132.96.110 "cd /path/to/your/project && docker build -t your-image-name:latest ."
+        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa deploy-user@${{ secrets.IP }} "cd /path/to/your/project && docker build -t your-image-name:latest ."
