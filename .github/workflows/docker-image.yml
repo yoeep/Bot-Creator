@@ -7,17 +7,31 @@ on:
 
 jobs:
   build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout Repository
       uses: actions/checkout@v2
 
-    - name: Deploy to server and build Docker image
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-      run: |
-        mkdir -p ~/.ssh
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa deploy-user@${{ secrets.IP }} "cd /home/deploy-user/Bot-Creator/projects && docker build -t bot0:${{ github.run_number }} ."
+    - name: Build Docker Image
+      run: docker build -t your-image-name:latest .
+
+    - name: Copy Dockerfile to Server
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.IP }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        source: "."
+        target: "/path/to/your/docker/project"
+
+    - name: SSH into Server and Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.IP }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          cd /path/to/your/docker/project
+          docker-compose up -d
