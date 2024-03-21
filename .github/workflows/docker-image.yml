@@ -24,7 +24,7 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         source: "."
-        target: "/path/to/your/docker/project"
+        target: "/home/deploy-user/Bot-Creator/projects"
 
     - name: SSH into Server and Deploy
       uses: appleboy/ssh-action@master
@@ -33,5 +33,5 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
-          cd /path/to/your/docker/project
+          cd /home/deploy-user/Bot-Creator/projects
           docker-compose up -d
