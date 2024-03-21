@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Third Party Integration</title>
+</head>
+<body>
+    <h1>Third Party Integration Information</h1>
+    <div id="third-party-info">
+        <!-- 这里将会显示第三方接口的信息 -->
+    </div>
+
+    <script>
+        // 异步加载配置文件
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'config/third_party_config.json');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var thirdPartyInfo = JSON.parse(xhr.responseText);
+                
+                // 将第三方接口信息添加到页面上
+                var infoDiv = document.getElementById("third-party-info");
+                infoDiv.innerHTML = "<h2>" + thirdPartyInfo.name + "</h2>";
+                infoDiv.innerHTML += "<p><strong>Version:</strong> " + thirdPartyInfo.version + "</p>";
+                infoDiv.innerHTML += "<p><strong>Endpoint:</strong> " + thirdPartyInfo.endpoint + "</p>";
+                infoDiv.innerHTML += "<p><strong>Description:</strong> " + thirdPartyInfo.description + "</p>";
+            } else {
+                console.error('Failed to load third party config file.');
+            }
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

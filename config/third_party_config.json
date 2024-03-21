@@ -1,0 +1,7 @@
+// third_party_config.json
+{
+    "name": "Third Party API",
+    "version": "v1.0",
+    "endpoint": "https://example.com/api",
+    "description": "This is a sample third party API."
+}
