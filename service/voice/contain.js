@@ -1,11 +1,11 @@
 const WebSocket = require("ws");
 const axios = require("axios") ;
-const log = require("../utils/logUtil");
+const log = require("../../utils/logUtil");
 const fs = require("fs");
 
 const upath = require('upath');
 const crypto = require('crypto');
-const requester = require('../utils/requester');
+const requester = require('../../utils/requester');
 
 
 

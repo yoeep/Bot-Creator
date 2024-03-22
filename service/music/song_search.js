@@ -1,8 +1,8 @@
 const axios = require("axios");
-const factory = require("../utils/factory");
-const {search_one,get_play_info,get_play_info_end,headers} = require('../utils/factory')
-const sysUtil = require("../utils/sys_util")
-const log = require('../utils/logUtil');
+const factory = require("../../utils/factory");
+const {search_one,get_play_info,get_play_info_end,headers} = require('../../utils/factory')
+const sysUtil = require("../../utils/sys_util")
+const log = require('../../utils/logUtil');
 
 
 module.exports = function (song_name){
@@ -19,16 +19,21 @@ module.exports = function (song_name){
                     axios.get(factory.get_play_info+copyrightId+get_play_info_end, { headers })
                         .then(response => {
                             const playInfo = response.data;
-                            log.debug(playInfo);
-                            log.info("https:"+ playInfo.data.playUrl);
-                            axios.get("https:"+ playInfo.data.playUrl)
-                            .then(response =>{
-                                const media = "https:" + playInfo.data.playUrl;
-                                resolve({id,name,singerName,media});
-                            })
-                            .catch(error=>{
-                                reject(error);
-                            })
+                            if(playInfo && playInfo.data && playInfo.data.playUrl){
+                                log.debug(playInfo);
+                                log.info("https:"+ playInfo.data.playUrl);
+                                axios.get("https:"+ playInfo.data.playUrl)
+                                .then(response =>{
+                                    const media = "https:" + playInfo.data.playUrl;
+                                    resolve({id,name,singerName,media});
+                                })
+                                .catch(error=>{
+                                    reject(error);
+                                })
+                            }else{
+                                log.error(playInfo);
+                            }
+                            
                             
                         })
                         .catch(error => {

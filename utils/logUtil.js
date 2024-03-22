@@ -6,7 +6,7 @@ function preLog(message){
     try{
         return JSON.stringify(message);
     }catch(error){
-        console.info(message);
+        //console.info(message);
         return message;
     }
     

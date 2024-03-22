@@ -5,7 +5,7 @@ const log = require('./logUtil')
 
 module.exports = {
     unzip_res : function(message){
-      console.info(message);
+      //log.debug(message);
         const inflatezipAsync = util.promisify(zlib.inflate);
         return new Promise((resolve, reject)=>{
           inflatezipAsync(message)
