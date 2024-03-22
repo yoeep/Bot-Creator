@@ -35,5 +35,5 @@ jobs:
         script: |
           cd /home/deploy-user/Bot-Creator/projects/bot0
           rm -rf ./*
-          docker -t bot0:${{ github.run_number }} .
+          docker build -t bot0:${{ github.run_number }} .
           docker run -d bot0:${{ github.run_number }}
