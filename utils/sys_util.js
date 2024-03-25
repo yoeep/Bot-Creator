@@ -25,8 +25,6 @@ module.exports = {
         for (let key of keys) {
           if (Array.isArray(current)) {
             current = current.map(item => getValueByPath(item, keys.slice(keys.indexOf(key)).join('.')));
-            console.info("====");
-            console.info(current[0]);
             return current[0];
           }
       

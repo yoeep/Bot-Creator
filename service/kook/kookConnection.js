@@ -58,7 +58,7 @@ function connectSocket(url){
                         pingReq.sn = Math.max(jsonData.sn, pingReq.sn);
                     }
                     //3.3 useful message event 
-                    if(jsonData.s == 0 && jsonData.d.author_id != selfId){
+                    if(jsonData.s == 0 && jsonData.d.author_id != selfId && jsonData.d.author_id != 1){
                         //3.2 group/group mention/direct event
                         if(jsonData.d.channel_type == "PERSON"){
                             extraEvent("direct",jsonData.d);
@@ -70,7 +70,7 @@ function connectSocket(url){
                             }
                             
                         }else{
-                            console.error('unknow channel type!');
+                            log.error('unknow channel type!');
                         }
                         //only return message data
                         myEmitter.emit("message",jsonData.d);

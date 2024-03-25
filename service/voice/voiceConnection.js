@@ -36,8 +36,7 @@ module.exports = function (channel_id,callback){
                                 log.debug(message);
                                 const data = JSON.parse(message.toString("utf8"));
                                 log.debug(`${current}: `);
-                                console.dir(data, { depth: null });
-                                log.debug("");
+                                log.debug(data);
                                 if (current == 1) {
                                     msgJSON[2].id = crypto.randomInt(1000000, 10000000);
                                     // msgJSON[2].data.displayName = "PlayTest#1";
@@ -59,7 +58,7 @@ module.exports = function (channel_id,callback){
                                 } else if (current == 4) {
                                     log.info(`rtp://${ip}:${port}?rtcpport=${rtcpPort}`);
                                     current = 5;
-                                    callback(`rtp://${ip}:${port}?rtcpport=${rtcpPort}`);
+                                    callback(`rtp://${ip}:${port}?rtcpport=${rtcpPort}`,conn);
                                 }
                                 else {
                                     if (data.notification && data.method && data.method == "disconnect") {
