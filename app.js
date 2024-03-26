@@ -18,15 +18,15 @@ kook.onGroupMessage(data=>{
 })
 kook.onGroupMetMessage(data=>{
 
-    const regex = /\(met\)(.*?)\(met\)/; 
+    const regex = /\(met\)(.*?)\(met\)\s*(.*)/;
     const match = regex.exec(data.content);
-
-    if (match) {
-        const desiredString = match[1];
+    
+    if (match && match.length >= 3) {
+        const content = match[2];
         if(musicHandle.channelId){
-            musicHandle.addSong(data.author_id, desiredString.trim())
+            musicHandle.addSong(data.author_id, content.trim())
         }else{
-            musicHandle.createPlayer(data.author_id, desiredString.trim(),()=>{messageService.group('Please join channel first.',data.target_id)});
+            musicHandle.createPlayer(data.author_id, content.trim(),()=>{messageService.group('Please join channel first.',data.target_id)});
         }
     }
     
