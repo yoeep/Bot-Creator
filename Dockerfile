@@ -10,6 +10,9 @@ COPY package*.json ./
 # 安装项目依赖
 RUN npm install
 
+RUN apt-get update && \
+    apt-get install -y ffmpeg
+
 # 复制当前目录下的所有文件到工作目录
 COPY . .
 
