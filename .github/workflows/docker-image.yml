@@ -34,5 +34,6 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd /home/deploy-user/Bot-Creator/projects/bot0
+          docker ps  | grep 'bot' | awk '{print $1}' | xargs -I {} docker stop {}
           docker build -t bot0:${{ github.run_number }} .
           docker run -d bot0:${{ github.run_number }}
