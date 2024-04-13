@@ -2,7 +2,7 @@ const conf = require('../config/config.json')
 module.exports = {
 
     botToken: conf.botToken,
-    gpt: "host.docker.internal:5000/api/chat",
+    gpt: "http://172.27.230.4:5000/api/chat",
     kook_url: {
         basicUrl: "https://www.kookapp.cn",
         basicUrl_old: "https://www.kaiheila.cn",
