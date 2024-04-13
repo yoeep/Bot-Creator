@@ -31,13 +31,14 @@ module.exports = {
             channelSercer.fetchChannelId(userId,guildInfo.items[0].id)
             .then(channelInfo=>{
                 if(channelInfo && channelInfo.items && channelInfo.items[0] && channelInfo.items[0].id){
-                    module.exports.channelId = channelInfo.items[0].id;
+                    
                     conn(channelInfo.items[0].id,(rpt,conn)=>{
                         songSearch(songName)
                         .then(med => {
                             if(Object.keys(module.exports.currentSong).length == 0){
                                 songList = [];
                                 log.info(rpt);
+                                module.exports.channelId = channelInfo.items[0].id;
                                 rptTransfer(rpt,med,nextSong,conn);
                             }
                             
