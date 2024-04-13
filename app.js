@@ -2,19 +2,20 @@ const kook = require('./service/kook/kookConnection');
 const messageService = require('./service/kook/kookMessage');
 const musicHandle = require('./service/bot/musicHandle');
 
+const qa = require('./service/language_support/qa');
 kook.onDirectMessage(data=>{
-    
-    if(musicHandle.channelId){
-        musicHandle.addSong(data.author_id, data.content)
-    }else{
-        musicHandle.createPlayer(data.author_id, data.content,()=>{messageService.direct('Please join channel first.',data.author_id)});
-    }
+    qa(data.content,(a)=>{messageService.direct(a,data.author_id)});
+    // if(musicHandle.channelId){
+    //     musicHandle.addSong(data.author_id, data.content)
+    // }else{
+    //     musicHandle.createPlayer(data.author_id, data.content,()=>{messageService.direct('Please join channel first.',data.author_id)});
+    // }
     
 
 })
 kook.onGroupMessage(data=>{
-    console.info("non server group message");
-    messageService.group('reply for group non server group message',data.target_id);
+    // console.info("non server group message");
+    // messageService.group('reply for group non server group message',data.target_id);
 })
 kook.onGroupMetMessage(data=>{
 
@@ -23,11 +24,12 @@ kook.onGroupMetMessage(data=>{
     
     if (match && match.length >= 3) {
         const content = match[2];
-        if(musicHandle.channelId){
-            musicHandle.addSong(data.author_id, content.trim())
-        }else{
-            musicHandle.createPlayer(data.author_id, content.trim(),()=>{messageService.group('Please join channel first.',data.target_id)});
-        }
+        qa(content.trim(),(a)=>{messageService.group(a,data.target_id)});
+        // if(musicHandle.channelId){
+        //     musicHandle.addSong(data.author_id, content.trim())
+        // }else{
+        //     musicHandle.createPlayer(data.author_id, content.trim(),()=>{messageService.group('Please join channel first.',data.target_id)});
+        // }
     }
     
     // musicHandle.createPlayer()
