@@ -2,8 +2,8 @@ const conf = require('../config/config.json')
 module.exports = {
 
     botToken: conf.botToken,
-    gpt: "http://127.0.0.1:5000/api/chat",
-    gpt_with_callback: "http://127.0.0.1:5000/api/chat_with_callback",
+    gpt: conf.gpt,
+    gpt_with_callback: conf.gpt_with_callback,
     kook_url: {
         basicUrl: "https://www.kookapp.cn",
         basicUrl_old: "https://www.kaiheila.cn",
