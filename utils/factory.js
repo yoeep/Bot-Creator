@@ -3,6 +3,7 @@ module.exports = {
 
     botToken: conf.botToken,
     gpt: "http://127.0.0.1:5000/api/chat",
+    gpt_with_callback: "http://127.0.0.1:5000/api/chat_with_callback",
     kook_url: {
         basicUrl: "https://www.kookapp.cn",
         basicUrl_old: "https://www.kaiheila.cn",
@@ -23,7 +24,7 @@ module.exports = {
             "Accept-Language": "zh-CN,zh;q=0.9",
             "By": "4f09e01c83d69100c363c33aecfef9f8",
             "Connection": "keep-alive",
-            "Cookie": "idmpauth=true@passport.migu.cn; migu_cookie_id=b89fd7e4-dfb0-4d9e-a88b-0695fbddaf74; b-user-id=81bb36b2-d487-06a1-e81d-44239870a256; mg_uem_user_id_3136357ddb6a49f5b317ca6254e7ea49=432175fd-c253-4928-b710-34943d97091f; cookieId=z--ZXoufDi7OsIDmvwCg0nfFkWTO1GG1711283612296; migu_music_msidn=yGs7P8%2F5wd4O%2Fgp%2Fz9iO6w%3D%3D; SESSION=ZTE3ODUwNzktMWUzNS00MDA5LWI3ZTAtZDY3MDViMDM3Y2M4",
+            "Cookie": "migu_cookie_id=b89fd7e4-dfb0-4d9e-a88b-0695fbddaf74; b-user-id=81bb36b2-d487-06a1-e81d-44239870a256; mg_uem_user_id_3136357ddb6a49f5b317ca6254e7ea49=432175fd-c253-4928-b710-34943d97091f; cookieId=z--ZXoufDi7OsIDmvwCg0nfFkWTO1GG1711283612296; idmpauth=true@passport.migu.cn; migu_music_msidn=yGs7P8%2F5wd4O%2Fgp%2Fz9iO6w%3D%3D; SESSION=Y2FkYzAyYzYtOThjNS00ODFjLWFiZDQtNTZmNWNlNTczOTg2",
             "Host": "m.music.migu.cn",
             "Referer": "https://m.music.migu.cn/v4/search",
             "Sec-Fetch-Dest": "empty",
@@ -31,6 +32,10 @@ module.exports = {
             "Sec-Fetch-Site": "same-origin",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
         }
+    },
+    stringResource:{
+        STR_NOTFOUND_CHANNEL: "请先加入一个语音频道",
+        STR_ORDER_SUCCESS : "播放成功"
     }
 
     

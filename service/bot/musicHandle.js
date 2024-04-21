@@ -40,6 +40,7 @@ module.exports = {
                                 log.info(rpt);
                                 module.exports.channelId = channelInfo.items[0].id;
                                 rptTransfer(rpt,med,nextSong,conn);
+                                callback("SUCC");
                             }
                             
                         })
@@ -54,7 +55,7 @@ module.exports = {
                         
                     })
                 }else{
-                    callback();
+                    callback("FAIL");
                 }
                 
             })

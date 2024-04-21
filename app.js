@@ -2,9 +2,10 @@ const kook = require('./service/kook/kookConnection');
 const messageService = require('./service/kook/kookMessage');
 const musicHandle = require('./service/bot/musicHandle');
 
+
 const qa = require('./service/language_support/qa');
 kook.onDirectMessage(data=>{
-    qa(data.content,(a)=>{messageService.direct(a,data.author_id)});
+    qa(data.author_id,data.content,(a)=>{messageService.direct(a,data.author_id)}, true);
     // if(musicHandle.channelId){
     //     musicHandle.addSong(data.author_id, data.content)
     // }else{
@@ -19,12 +20,13 @@ kook.onGroupMessage(data=>{
 })
 kook.onGroupMetMessage(data=>{
 
-    const regex = /\(met\)(.*?)\(met\)\s*(.*)/;
+    const regex = /\(met\)(.*)\(met\)\s*(.*)/;
     const match = regex.exec(data.content);
     
     if (match && match.length >= 3) {
         const content = match[2];
-        qa(content.trim(),(a)=>{messageService.group(a,data.target_id)});
+        console.info(match[1]);
+        qa(data.author_id,content.trim(),(a)=>{messageService.group(a,data.target_id)});
         // if(musicHandle.channelId){
         //     musicHandle.addSong(data.author_id, content.trim())
         // }else{
@@ -46,3 +48,17 @@ kook.onError(err=>{
 });
 
 kook.connection();
+//kook api
+
+const express = require('express');
+const routes = require('./routes');
+const bodyParser = require('body-parser');
+
+const app = express();
+const port = 3000;
+app.use(bodyParser.json());
+app.use('/', routes);
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
