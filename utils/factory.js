@@ -4,6 +4,7 @@ module.exports = {
     botToken: conf.botToken,
     gpt: conf.gpt,
     gpt_with_callback: conf.gpt_with_callback,
+    locahost: conf.localhost,
     kook_url: {
         basicUrl: "https://www.kookapp.cn",
         basicUrl_old: "https://www.kaiheila.cn",

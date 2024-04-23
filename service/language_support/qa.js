@@ -3,6 +3,7 @@ const log = require('../../utils/logUtil');
 
 const gpt_url  = require('../../utils/factory').gpt;
 const gpt_url_with_callback  = require('../../utils/factory').gpt_with_callback;
+const locahost  = require('../../utils/factory').locahost;
 
 module.exports = function (user_id, q, callback, with_callback){
     let data = {};
@@ -12,7 +13,7 @@ module.exports = function (user_id, q, callback, with_callback){
         data = {
             "msg":user_id + ": " + q,
             "callback":{
-                "url": "http://localhost:3000/music",
+                "url": locahost + "/music",
                 "body": {
                 },
                 "header": {}

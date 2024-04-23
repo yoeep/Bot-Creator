@@ -2,5 +2,6 @@
 {
     "botToken": "Bot 1/Mjg4NDY=/TxL3sFfrer1nZN5re/WRQQ==",
     "gpt": "http://172.27.230.4:5000/api/chat",
-    "gpt_with_callback": "http://172.27.230.4:5000/api/chat_with_callback"
+    "gpt_with_callback": "http://172.27.230.4:5000/api/chat_with_callback",
+    "localhost": "http://172.27.230.4:3000"
 }

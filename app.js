@@ -6,13 +6,11 @@ const musicHandle = require('./service/bot/musicHandle');
 const qa = require('./service/language_support/qa');
 kook.onDirectMessage(data=>{
     qa(data.author_id,data.content,(a)=>{messageService.direct(a,data.author_id)}, true);
-    // if(musicHandle.channelId){
-    //     musicHandle.addSong(data.author_id, data.content)
-    // }else{
-    //     musicHandle.createPlayer(data.author_id, data.content,()=>{messageService.direct('Please join channel first.',data.author_id)});
-    // }
-    
-
+    if(musicHandle.channelId){
+        musicHandle.addSong(data.author_id, data.content)
+    }else{
+        musicHandle.createPlayer(data.author_id, data.content,()=>{messageService.direct('Please join channel first.',data.author_id)});
+    }
 })
 kook.onGroupMessage(data=>{
     // console.info("non server group message");
